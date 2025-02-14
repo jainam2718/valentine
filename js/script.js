@@ -1,0 +1,476 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const albumId = new URLSearchParams(window.location.search).get("albumId");
+  
+
+
+  const albumTitle = document.getElementById("album-title");
+  const albumDescription = document.getElementById("album-description");
+  const albumGallery = document.getElementById("album-gallery");
+  const albumAudio = document.getElementById("album-audio");
+
+  // Placeholder for dynamically generated album data from folder names
+  // Example: assuming folder structure in /x/2025_01, /x/2025_02, etc.
+  const albumData = {};
+
+  // Generate album data dynamically based on folder names (simulating server-side behavior)
+  // Replace this with actual logic or AJAX request to fetch folder names from server-side or backend
+  
+
+  // albumFolders.forEach((folder, index) => {
+  //     const yearMonth = folder.split("_");
+  //     const year = yearMonth[0];
+  //     const month = yearMonth[1];
+
+  //     // Add dynamic data for each album
+  //     albumData[index + 1] = {
+  //         title: `Album ${index + 1}: ${year}-${month}`,
+  //         description: `Description for album from ${year}-${month}`,
+  //         imageFolder: `images/${folder}`,
+  //         musicFile: `music/${folder}.mp3`
+  //     };
+  // });
+
+  images_json = {
+    "0": [
+        "./images/Valentine2k25/2024_10/.DS_Store",
+        "./images/Valentine2k25/2024_10/IMG-20241030-WA0005.jpg",
+        "./images/Valentine2k25/2024_10/IMG-20241030-WA0003.jpg",
+        "./images/Valentine2k25/2024_10/IMG-20241030-WA0002.jpg",
+        "./images/Valentine2k25/2024_10/IMG-20241027-WA0003.jpg",
+        "./images/Valentine2k25/2024_10/IMG-20241027-WA0002.jpg",
+        "./images/Valentine2k25/2024_11/20241106_044141.jpg",
+        "./images/Valentine2k25/2024_11/IMG-20241119-WA0033.jpg",
+        "./images/Valentine2k25/2024_12/IMG-20241230-WA0055.jpg",
+        "./images/Valentine2k25/2024_12/IMG-20241230-WA0054.jpg",
+        "./images/Valentine2k25/2024_12/.DS_Store",
+        "./images/Valentine2k25/2024_12/IMG-20241230-WA0003.jpg",
+        "./images/Valentine2k25/2024_12/IMG-20241230-WA0065.jpg",
+        "./images/Valentine2k25/2025_01/PXL_20250101_051308159.jpg",
+        "./images/Valentine2k25/2025_01/PXL_20250101_051813791.jpg",
+        "./images/Valentine2k25/2025_01/20250130_192131.jpg",
+        "./images/Valentine2k25/2025_01/IMG-20250101-WA0029.jpg",
+        "./images/Valentine2k25/2025_01/IMG-20250101-WA0005.jpg",
+        "./images/Valentine2k25/2025_01/IMG-20250101-WA0025.jpg",
+        "./images/Valentine2k25/2025_01/IMG-20250101-WA0027.jpg",
+        "./images/Valentine2k25/2025_01/IMG-20250129-WA0001.jpg",
+        "./images/Valentine2k25/2025_01/20250107_083030.jpg",
+        "./images/Valentine2k25/2025_02/.DS_Store",
+        "./images/Valentine2k25/2025_02/IMG-20250201-WA0008.jpg"
+    ],
+    "1": [
+        "./images/Valentine2k25/2024_01/20240101_112739.jpg",
+        "./images/Valentine2k25/2024_01/20240109_150046.jpg",
+        "./images/Valentine2k25/2024_01/20240109_140346.jpg",
+        "./images/Valentine2k25/2024_01/IMG-20240101-WA0005.jpg",
+        "./images/Valentine2k25/2024_01/20240104_003655.jpg",
+        "./images/Valentine2k25/2024_01/20240109_140459.jpg",
+        "./images/Valentine2k25/2024_04/20240422_154028.jpg",
+        "./images/Valentine2k25/2024_04/20240427_202819.jpg",
+        "./images/Valentine2k25/2024_04/20240423_183144.jpg",
+        "./images/Valentine2k25/2024_04/20240422_122527.jpg",
+        "./images/Valentine2k25/2024_04/20240418_130243.jpg",
+        "./images/Valentine2k25/2024_04/20240422_164558.jpg",
+        "./images/Valentine2k25/2024_04/20240423_183035.jpg",
+        "./images/Valentine2k25/2024_04/20240420_113448 (1).jpg",
+        "./images/Valentine2k25/2024_04/20240428_123332.jpg",
+        "./images/Valentine2k25/2024_04/20240422_164540.jpg",
+        "./images/Valentine2k25/2024_04/20240422_153932.jpg",
+        "./images/Valentine2k25/2024_04/20240422_193109.jpg",
+        "./images/Valentine2k25/2024_04/20240419_153633.jpg",
+        "./images/Valentine2k25/2024_04/20240420_113254.jpg",
+        "./images/Valentine2k25/2024_04/20240423_183139.jpg",
+        "./images/Valentine2k25/2024_04/20240420_121434.jpg",
+        "./images/Valentine2k25/2024_04/20240420_113442.jpg",
+        "./images/Valentine2k25/2024_04/20240423_165054.jpg"
+    ],
+    "2": [
+        "./images/Valentine2k25/2023_05/20230521_200600.jpg",
+        "./images/Valentine2k25/2023_06/20230605_210458.jpg",
+        "./images/Valentine2k25/2023_07/20230702_175436.jpg",
+        "./images/Valentine2k25/2023_07/20230701_061934.jpg",
+        "./images/Valentine2k25/2023_07/IMG-20230712-WA0003.jpg",
+        "./images/Valentine2k25/2023_07/20230702_175431.jpg",
+        "./images/Valentine2k25/2023_07/20230701_061931.jpg",
+        "./images/Valentine2k25/2023_07/IMG_0830.JPG",
+        "./images/Valentine2k25/2023_07/IMG-20230712-WA0004.jpg",
+        "./images/Valentine2k25/2023_07/20230701_202535.jpg",
+        "./images/Valentine2k25/2023_07/20230708_000917.jpg",
+        "./images/Valentine2k25/2023_07/20230714_225253.jpg",
+        "./images/Valentine2k25/2023_07/20230714_225251.jpg",
+        "./images/Valentine2k25/2023_07/20230702_183256.jpg",
+        "./images/Valentine2k25/2023_07/20230701_192340.jpg",
+        "./images/Valentine2k25/2023_07/20230702_181911.jpg",
+        "./images/Valentine2k25/2023_07/20230708_000843.jpg",
+        "./images/Valentine2k25/2023_07/20230708_000920.jpg",
+        "./images/Valentine2k25/2023_08/20230806_224113.jpg",
+        "./images/Valentine2k25/2023_08/20230806_224459.jpg",
+        "./images/Valentine2k25/2023_08/20230806_214232.jpg",
+        "./images/Valentine2k25/2023_08/20230806_215934.jpg",
+        "./images/Valentine2k25/2023_09/20230910_002156.jpg",
+        "./images/Valentine2k25/2023_09/20230910_165456.jpg",
+        "./images/Valentine2k25/2023_09/20230910_002009.jpg",
+        "./images/Valentine2k25/2023_09/20230910_165455.jpg",
+        "./images/Valentine2k25/2023_09/IMG-20230911-WA0015.jpg",
+        "./images/Valentine2k25/2023_09/IMG-20230911-WA0004.jpg",
+        "./images/Valentine2k25/2023_09/20230910_002108.jpg",
+        "./images/Valentine2k25/2023_09/IMG-20230911-WA0013.jpg",
+        "./images/Valentine2k25/2023_09/20230908_002224.jpg",
+        "./images/Valentine2k25/2023_09/20230909_232723.jpg",
+        "./images/Valentine2k25/2023_09/20230908_002219.jpg",
+        "./images/Valentine2k25/2023_09/20230907_235903.jpg",
+        "./images/Valentine2k25/2023_09/20230908_002227.jpg",
+        "./images/Valentine2k25/2023_09/20230907_235913.jpg",
+        "./images/Valentine2k25/2023_09/20230910_002210.jpg",
+        "./images/Valentine2k25/2023_09/20230909_232545.jpg",
+        "./images/Valentine2k25/2023_10/20231029_221953.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192929.jpg",
+        "./images/Valentine2k25/2023_10/20231009_211530.jpg",
+        "./images/Valentine2k25/2023_10/.DS_Store",
+        "./images/Valentine2k25/2023_10/20231009_211540.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192154.jpg",
+        "./images/Valentine2k25/2023_10/IMG-20240522-WA0003.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192200.jpg",
+        "./images/Valentine2k25/2023_10/20231029_221915.jpg",
+        "./images/Valentine2k25/2023_10/20231009_193044.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192945.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192505.jpg",
+        "./images/Valentine2k25/2023_10/20231009_192930.jpg",
+        "./images/Valentine2k25/2023_10/20231009_193030.jpg",
+        "./images/Valentine2k25/2023_10/IMG_0230.JPG",
+        "./images/Valentine2k25/2023_10/20231009_192514.jpg",
+        "./images/Valentine2k25/2023_11/IMG-20231120-WA0008.jpg",
+        "./images/Valentine2k25/2023_11/2023-11-05 16.37.16.jpg",
+        "./images/Valentine2k25/2023_11/20231129_213347.jpg",
+        "./images/Valentine2k25/2023_11/20231129_213332.jpg",
+        "./images/Valentine2k25/2023_11/IMG-20231120-WA0004.jpg",
+        "./images/Valentine2k25/2023_11/IMG-20231120-WA0003.jpg",
+        "./images/Valentine2k25/2023_11/IMG_6534.jpg",
+        "./images/Valentine2k25/2023_12/20231231_113334.jpg",
+        "./images/Valentine2k25/2023_12/20231230_195854.jpg",
+        "./images/Valentine2k25/2023_12/20231231_160536.jpg",
+        "./images/Valentine2k25/2023_12/20231231_113323.jpg",
+        "./images/Valentine2k25/2023_12/.DS_Store",
+        "./images/Valentine2k25/2023_12/20231230_212416.jpg",
+        "./images/Valentine2k25/2023_12/20231231_170357.jpg",
+        "./images/Valentine2k25/2023_12/20231231_163539.jpg",
+        "./images/Valentine2k25/2023_12/20231204_171606.jpg",
+        "./images/Valentine2k25/2023_12/20231230_192556-01.jpeg",
+        "./images/Valentine2k25/2023_12/20231230_192714-01.jpeg",
+        "./images/Valentine2k25/2023_12/20231230_192556.jpg",
+        "./images/Valentine2k25/2023_12/20231230_191922.jpg",
+        "./images/Valentine2k25/2023_12/20231226_200604.jpg",
+        "./images/Valentine2k25/2023_12/20231231_170347.jpg",
+        "./images/Valentine2k25/2023_12/20231230_212452.jpg",
+        "./images/Valentine2k25/2023_12/20231230_191900.jpg",
+        "./images/Valentine2k25/2023_12/20231230_212509.jpg",
+        "./images/Valentine2k25/2023_12/20231230_202109.jpg",
+        "./images/Valentine2k25/2023_12/20231230_202043.jpg",
+        "./images/Valentine2k25/2023_12/20231230_172343.jpg",
+        "./images/Valentine2k25/2023_12/20231230_174737.jpg",
+        "./images/Valentine2k25/2023_12/20231230_192714.jpg",
+        "./images/Valentine2k25/2023_12/IMG_7410-1.jpg"
+    ],
+    "3": [],
+    "4": [
+        "./images/Valentine2k25/2022_08/IMG20220827122858.jpg",
+        "./images/Valentine2k25/2022_08/20220828_071119.jpg",
+        "./images/Valentine2k25/2022_08/20220828_073453.jpg",
+        "./images/Valentine2k25/2022_08/IMG-20220801-WA0020.jpg",
+        "./images/Valentine2k25/2022_08/IMG-20220826-WA0001.jpg",
+        "./images/Valentine2k25/2022_08/20220828_073346.jpg",
+        "./images/Valentine2k25/2022_08/20220828_073813.jpg",
+        "./images/Valentine2k25/2022_08/20220828_071153.jpg",
+        "./images/Valentine2k25/2022_08/IMG20220820203001.jpg",
+        "./images/Valentine2k25/2022_08/IMG-20220827-WA0013.jpg",
+        "./images/Valentine2k25/2022_08/IMG-20220827-WA0010.jpg",
+        "./images/Valentine2k25/2022_08/IMG-20241220-WA0024.jpg",
+        "./images/Valentine2k25/2022_08/IMG20220820204535.jpg"
+    ],
+    "5": [
+        "./images/Valentine2k25/2018_08/20180811_171133.jpg",
+        "./images/Valentine2k25/2018_09/20180921_180712.jpg",
+        "./images/Valentine2k25/2018_11/Screenshot_20181129-203831_Snapchat.jpg",
+        "./images/Valentine2k25/2018_11/Screenshot_20181129-203847_Snapchat.jpg",
+        "./images/Valentine2k25/2018_11/Screenshot_20181129-203837_Snapchat.jpg",
+        "./images/Valentine2k25/2018_11/Screenshot_20181129-203839_Snapchat.jpg",
+        "./images/Valentine2k25/2018_11/IMG_20181120_015237_319.jpg",
+        "./images/Valentine2k25/2018_11/IMG_20181120_015717_133.jpg",
+        "./images/Valentine2k25/2019_02/20190226_180431.jpg",
+        "./images/Valentine2k25/2019_02/IMG-20190215-WA0001.jpg",
+        "./images/Valentine2k25/2019_02/20190226_180320.jpg",
+        "./images/Valentine2k25/2019_02/20190226_180524.jpg",
+        "./images/Valentine2k25/2019_02/20190226_180327.jpg",
+        "./images/Valentine2k25/2019_02/20190226_180538.jpg",
+        "./images/Valentine2k25/2019_02/20190210_201118.jpg",
+        "./images/Valentine2k25/2019_03/20190327_170740.jpg",
+        "./images/Valentine2k25/2019_04/20190410_151955.jpg",
+        "./images/Valentine2k25/2019_04/20190427_154322.jpg",
+        "./images/Valentine2k25/2019_04/20190427_155801.jpg",
+        "./images/Valentine2k25/2019_04/20190416_192846.jpg",
+        "./images/Valentine2k25/2019_04/20190423_060905.jpg",
+        "./images/Valentine2k25/2019_05/20190503_193118.jpg",
+        "./images/Valentine2k25/2019_05/.DS_Store",
+        "./images/Valentine2k25/2019_06/20190617_190421.jpg",
+        "./images/Valentine2k25/2019_09/20190929_153130.jpg",
+        "./images/Valentine2k25/2019_09/20190929_161656.jpg",
+        "./images/Valentine2k25/2019_10/IMG-20191003-WA0015.jpg",
+        "./images/Valentine2k25/2019_11/IMG_20191120_104328_376.jpg",
+        "./images/Valentine2k25/2019_11/IMG_20191120_001056_675.jpg",
+        "./images/Valentine2k25/2019_11/IMG_20191120_104648_417.jpg",
+        "./images/Valentine2k25/2019_11/IMG_20191120_104205_971.jpg",
+        "./images/Valentine2k25/2019_12/IMG_20191214_154220_259.jpg",
+        "./images/Valentine2k25/2019_12/20191222_185610.jpg",
+        "./images/Valentine2k25/2019_12/IMG_20191214_154236_510.jpg",
+        "./images/Valentine2k25/2019_12/IMG_20191214_160147_103.jpg",
+        "./images/Valentine2k25/2020_01/IMG-20200118-WA0001.jpg",
+        "./images/Valentine2k25/2020_01/IMG_20200117_201244_924.jpg",
+        "./images/Valentine2k25/2020_01/IMG-20200119-WA0000.jpg",
+        "./images/Valentine2k25/2020_01/20200117_195931.jpg",
+        "./images/Valentine2k25/2020_01/20200117_200011.jpg",
+        "./images/Valentine2k25/2020_02/IMG_20200215_183947_357.jpg",
+        "./images/Valentine2k25/2020_02/IMG_20200215_183435_915.jpg",
+        "./images/Valentine2k25/2020_02/IMG_20200215_183404_285.jpg",
+        "./images/Valentine2k25/2020_05/IMG_20200503_002315_292.jpg",
+        "./images/Valentine2k25/2020_05/IMG_20200503_002131_571.jpg",
+        "./images/Valentine2k25/2020_08/IMG_20200831_142049_124.jpg",
+        "./images/Valentine2k25/2020_08/IMG_20200831_142305_980.jpg",
+        "./images/Valentine2k25/2020_08/IMG_20200831_142429_149.jpg",
+        "./images/Valentine2k25/2020_08/IMG_20200831_143238_956.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163435_073.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162225_018.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161249_297.jpg",
+        "./images/Valentine2k25/2020_09/IMG-20200912-WA0027.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162246_989.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161807_690.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163356_149.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163247_852.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163228_245.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162317_854.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161822_720.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161843_033.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161854_265.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162947_863.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163017_729.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163208_922.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163035_511.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163306_088.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_163324_726.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162236_572.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162933_779.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162014_602.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161906_215.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161402_555.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161227_874.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162125_183.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_162058_159.jpg",
+        "./images/Valentine2k25/2020_09/IMG_20200916_161945_668.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-2079300260.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-1386275882.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-1958698554.mp4",
+        "./images/Valentine2k25/2020_11/.DS_Store",
+        "./images/Valentine2k25/2020_11/IMG_20201121_161133.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162704_396.jpg",
+        "./images/Valentine2k25/2020_11/20201121_162533.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_161800_770.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-1609112689.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-353604223.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162537_756.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-1271802582.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-520895732.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162045_352.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_185930_505.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162852_527.jpg",
+        "./images/Valentine2k25/2020_11/Snapchat-1527289039.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162143_705.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_161927_747.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_162612_568.jpg",
+        "./images/Valentine2k25/2020_11/IMG_20201120_185731_544.jpg",
+        "./images/Valentine2k25/2020_12/IMG-20201215-WA0010.jpg",
+        "./images/Valentine2k25/2020_12/20201215_162018.jpg",
+        "./images/Valentine2k25/2020_12/IMG-20201216-WA0000.jpg",
+        "./images/Valentine2k25/2020_12/IMG-20201215-WA0009.jpg",
+        "./images/Valentine2k25/2021_01/IMG-20210101-WA0015.jpg",
+        "./images/Valentine2k25/2021_01/.DS_Store",
+        "./images/Valentine2k25/2021_01/Snapchat-338208443.jpg",
+        "./images/Valentine2k25/2021_01/20210101_174313.jpg",
+        "./images/Valentine2k25/2021_02/IMG_20210201_200341_499.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210201-WA0023.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210201-WA0041.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210211-WA0046.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210201-WA0014.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210218-WA0007.jpg",
+        "./images/Valentine2k25/2021_02/IMG-20210201-WA0004.jpg",
+        "./images/Valentine2k25/2021_06/IMG_9234.jpg",
+        "./images/Valentine2k25/2021_06/.DS_Store",
+        "./images/Valentine2k25/2021_06/IMG-20210624-WA0020.jpg",
+        "./images/Valentine2k25/2021_06/IMG_9269.jpg",
+        "./images/Valentine2k25/2021_06/IMG-20210624-WA0048.jpg",
+        "./images/Valentine2k25/2021_06/IMG_9274.jpg",
+        "./images/Valentine2k25/2021_11/20211121_171358.jpg",
+        "./images/Valentine2k25/2021_11/20211121_171241.jpg",
+        "./images/Valentine2k25/2021_12/IMG-20211222-WA0053.jpg",
+        "./images/Valentine2k25/2021_12/IMG-20211222-WA0052.jpg",
+        "./images/Valentine2k25/2021_12/IMG-20211222-WA0035.jpg",
+        "./images/Valentine2k25/2021_12/IMG-20211222-WA0027.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20220207-WA0017.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20240207-WA0005.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20240207-WA0001.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20240207-WA0000.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20220207-WA0037.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20220207-WA0055.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20220208-WA0035.jpg",
+        "./images/Valentine2k25/2022_02/IMG-20220207-WA0056.jpg",
+        "./images/Valentine2k25/2022_03/20220313_121330.jpg",
+        "./images/Valentine2k25/2022_03/20220313_175538.jpg",
+        "./images/Valentine2k25/2022_03/20220313_120854.jpg",
+        "./images/Valentine2k25/2022_03/20220313_120654.jpg",
+        "./images/Valentine2k25/2022_04/IMG-20220416-WA0012.jpg",
+        "./images/Valentine2k25/2022_04/IMG-20220416-WA0032.jpg"
+    ],
+    "6": [
+        "./images/Valentine2k25/2017_08/B612_20170806_171241.jpg",
+        "./images/Valentine2k25/2017_08/B612_20170806_171254.jpg",
+        "./images/Valentine2k25/2017_08/B612_20170806_171420.jpg",
+        "./images/Valentine2k25/2017_12/.DS_Store",
+        "./images/Valentine2k25/2017_12/Snapchat-128000738.jpg",
+        "./images/Valentine2k25/2017_12/IMG_20171221_175626.jpg"
+    ],
+    "7": [
+        "./images/Valentine2k25/2014_04/DSC06613.JPG",
+        "./images/Valentine2k25/2014_04/DSC06603.JPG",
+        "./images/Valentine2k25/2014_04/DSC06539.JPG",
+        "./images/Valentine2k25/2014_04/DSC06533.JPG",
+        "./images/Valentine2k25/2014_04/DSC06585.JPG",
+        "./images/Valentine2k25/2014_04/DSC06556.JPG",
+        "./images/Valentine2k25/2015_07/IMG-20210109-WA0012.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20210109-WA0014.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0029.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0005.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0011.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20220618-WA0011.png",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0010.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0004.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0014.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0028.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0007.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0013.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0003.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0002.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20250202-WA0001.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0011.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0008.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0020.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0021.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0032.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20190522-WA0026.jpg",
+        "./images/Valentine2k25/2015_07/IMG-20220618-WA0009.jpg"
+    ]
+}
+
+
+  // Function to fetch photos from the folder (you'll still need a backend script for dynamic image listing)
+  function fetchPhotos() {
+      const photos = images_json[albumId];
+
+
+    photos.forEach(photo => {
+        const photoDiv = document.createElement("div");
+        photoDiv.classList.add("photo");
+        const img = document.createElement("img");
+        img.src = photo;
+        photoDiv.appendChild(img);
+        albumGallery.appendChild(photoDiv);
+    });
+  }
+
+      // albumTitle.textContent = albumTopic;
+      // albumDescription.textContent = albumDesc;
+      albumAudio.src = `./music/${albumId}.mp3`;
+
+      // Fetch and display the photos
+      fetchPhotos();
+
+    const slideshowContainer = document.getElementById("slideshow-container");
+    const dotsContainer = document.getElementById("dots-container");
+
+    // Placeholder for dynamic album photos (using your 'images_json' or albumId-related data)
+    const photos = images_json[albumId];
+
+    // Function to create the gallery and slideshow
+    function setupGalleryAndSlideshow() {
+        let slideIndex = 0;
+
+        // Clear existing content in slideshow and gallery containers
+        slideshowContainer.innerHTML = '';
+        dotsContainer.innerHTML = '';
+
+        // Create slideshow items and dots
+        photos.forEach((photo, index) => {
+            const slideDiv = document.createElement("div");
+            slideDiv.classList.add("mySlides", "fade");
+            
+            // Create number text (optional)
+            const numberText = document.createElement("div");
+            numberText.classList.add("numbertext");
+            numberText.textContent = `${index + 1} / ${photos.length}`;
+            
+            // Create the image element
+            const img = document.createElement("img");
+            img.src = photo;
+            img.style.width = "100%";
+            
+            // Create caption text (optional)
+            const textDiv = document.createElement("div");
+            textDiv.classList.add("text");
+            textDiv.textContent = `Valinetine 2025`;
+            
+            // Append elements
+            slideDiv.appendChild(numberText);
+            slideDiv.appendChild(img);
+            slideDiv.appendChild(textDiv);
+            slideshowContainer.appendChild(slideDiv);
+            
+            // Create dots
+            const dot = document.createElement("span");
+            dot.classList.add("dot");
+            dotsContainer.appendChild(dot);
+        });
+
+        // Slideshow logic
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            
+            // Remove 'active' class from all dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            
+            // Increment slide index, wrap around if necessary
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Display the current slide and highlight the corresponding dot
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].classList.add("active");
+
+            // Change slide every 2 seconds
+            setTimeout(showSlides, 2200);
+        }
+
+        // Initialize the slideshow
+        showSlides();
+    }
+
+    // Initialize the gallery and slideshow
+    setupGalleryAndSlideshow();
+
+  
+});

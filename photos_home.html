@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love Story</title>
+  <link rel="stylesheet" href="css/timeline.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Portfolio</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="libs/font-awesome/css/font-awesome.min.css"
+    />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <h1>Our Love Story</h1>
+    <p>Journey through our memories</p>
+  </header>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <style>
+   
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    }
+    #timer {
+        justify-content: center;  /* Centers vertically */
+      align-items: center;
+      display: flex;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+    .time-box {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      min-width: 100px;
+      transition: transform 0.3s;
+    }
+    .time-box:hover {
+      transform: scale(1.05);
+    }
+    .number {
+      font-size: 2.5em;
+      font-weight: 600;
+    }
+    .label {
+      font-size: 1em;
+      margin-top: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="timer">
+
+  <h1>Our Love♡</h1>
+  <div class="time-box">
+    <div class="number" id="years">0</div>
+    <div class="label">Years</div>
+  </div>
+  <div class="time-box">
+    <div class="number" id="months">0</div>
+    <div class="label">Months</div>
+  </div>
+    <div class="time-box">
+      <div class="number" id="days">0</div>
+      <div class="label">Days</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="hours">0</div>
+      <div class="label">Hours</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="minutes">0</div>
+      <div class="label">Minutes</div>
+    </div>
+    <div class="time-box">
+      <div class="number" id="seconds">0</div>
+      <div class="label">Seconds</div>
+    </div>
+  </div>
+
+  <script>
+    function updateTimer() {
+        const startDate = new Date('2016-05-03T00:00:00');
+      const now = new Date();
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+      
+      if (days < 0) {
+        months -= 1;
+        const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        days += lastMonth;
+      }
+
+      if (months < 0) {
+        years -= 1;
+        months += 12;
+      }
+
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+    document.getElementById('years').textContent = years;
+    document.getElementById('months').textContent = months;
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+  <div id="experience" class="background-alt">
+    <h2 class="heading">Our Love Story</h2>
+    <div id="experience-timeline">
+        <div data-date="June 2024 – Present">
+            <h3>
+                <!-- <a color="black" href="https://nrc.canada.ca/en/">
+                    <img src="images/nrc.jpg" width="10%" /> -->
+                    <b>First Jobs</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Siemens-Trend</b></h4>
+            <p>
+                <a href="album.html?albumId=0">Lets Go!</a>
+            </p>
+        </div>
+        <div data-date="January 2024 – May 2024">
+            <h3>
+                <!-- <a color="black" href="https://www.uottawa.ca/faculty-medicine/family">
+                    <img src="images/dfm.jpg" width="10%" /> -->
+                    <b>Master's Final Term</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Family-introduction</b></h4>
+            <p>
+                <a href="album.html?albumId=1">Check It Out!</a>
+            </p>
+        </div>
+        <div data-date="May 2023 – December 2023">
+            <h3>
+                <!-- <a color="black" href="https://www.uottawa.ca/en">
+                    <img src="images/uottawa.jpg" width="10%" /> -->
+                    <b>Nokia-uOttawa-NRC-Laura</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Co-op</b></h4>
+            <p>
+                <a href="album.html?albumId=2">Click Me!</a>
+            </p>
+        </div>
+        <div data-date="September 2022 – April 2023">
+            <h3>
+                <!-- <a
+                    color="black"
+                    href="https://www.sac.gov.in/Vyom/index.jsp"
+                >
+                    <img src="images/sac.jpg" width="10%" /> -->
+                    <b>SFU-uOttawa</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Master's Begin</b></h4>
+            <p>
+                <a href="album.html?albumId=3">sad</a>
+            </p>
+        </div>
+        <div data-date="May 2022 – August 2022">
+            <h3>
+                <!-- <a href="https://www.sakhaglobal.com/">
+                    <img src="images/sakha.jpg" width="10%" /> -->
+                    <b>Canada Prep</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Get Ready For Long Distance</b></h4>
+            <p>
+                <a href="album.html?albumId=4">First time far away!</a>
+            </p>
+        </div>
+        <div data-date="June 2018 – April 2022">
+            <h3>
+                <!-- <a href="https://www.sakhaglobal.com/">
+                    <img src="images/sakha.jpg" width="10%" /> -->
+                    <b>BTech</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Just 30min away</b></h4>
+            <p>
+                <a href="album.html?albumId=5">oh the gold old days</a>
+            </p>
+        </div>
+        <div data-date="June 2016 – May 2018">
+            <h3>
+                <!-- <a href="https://www.sakhaglobal.com/">
+                    <img src="images/sakha.jpg" width="10%" /> -->
+                    <b>Relationship Begin</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>GF/BF</b></h4>
+            <p>
+                <a href="album.html?albumId=6">Thats my girl!</a>
+            </p>
+        </div>
+        <div data-date="June 2014 – May 2016">
+            <h3>
+                <!-- <a href="https://www.sakhaglobal.com/">
+                    <img src="images/sakha.jpg" width="10%" /> -->
+                    <b>Best Friends</b>
+                <!-- </a> -->
+            </h3>
+            <h4><b>Hidden Romance</b></h4>
+            <p>
+                <a href="album.html?albumId=7">Innocent Love!</a>
+            </p>
+        </div>
+    </div>
+</div>
+  <footer>
+    <p>&copy; 2025 Our Love Story</p>
+  </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/scripts.min.js"></script>
+</body>
+</html>
